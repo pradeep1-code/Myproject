@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/reg.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="main-title">Welcome to Electronic Service</h1>
+        <hr class="main-line">
+        
+        <div class="info">
+            <div class="image-container">
+                <img src="{% static 'images/sign.jpg' %}" alt="Sign Up Image">
+            </div>
+            <div class="text-container">
+                <p>We offer high-quality services for various types of electrical gadgets. Our experienced technicians ensure the protection of your gadgets.</p>
+                <p>To get service, sign up to Electro.</p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2 class="form-title">Sign Up</h2>
+            <form method="post" class="signup-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" placeholder="Username" id="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" placeholder="Email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password1" placeholder="Password" id="password1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" name="password2" placeholder="Confirm Password" id="password2" required>
+                </div>
+
+                <button type="submit" class="btn">Sign Up</button>
+
+                <div class="extra-links">
+                    <a href="login" class="login-link">I already have an account</a>
+                    <span>|</span>
+                    <a href="/admin" class="admin-link">Login as <span>admin</span></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

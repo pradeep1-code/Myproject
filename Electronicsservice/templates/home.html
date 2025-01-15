@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Service</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://kit.fontawesome.com/e29bf25393.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+</head>
+<body>
+<!-- header section starts  -->
+<header class="header">
+    <nav class="navbar">
+        <a href="#" class="logo"> <i class="fas fa-tools"></i> electro </a>
+        <div class="links">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#services">services</a>
+            <a href="#gallery">gallery</a>
+            <a href="#reviews">Reviews</a>
+            <a href="/bookings">Book</a>
+            <a href="{% url 'my_appointments' %}">My Appointments</a>
+            <a href="#contact">contact</a>
+            <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+        </div>
+    </nav>
+</header>
+<!-- header section ends -->
+
+<!-- home section starts  -->
+<section class="home" id="home">
+    <div class="image">
+        <img src="{% static 'images/homii.jpg' %}" alt="">
+    </div>
+    <div class="content">
+        <h3>Why fix it yourself? Leave it to the pros.</h3>
+        <p>Our technicians are highly courteous and trained with multiple years of industry experience. Highest quality
+            spare parts are used for all our jobs.</p>
+        <a href="#about" class="btn">get started</a>
+    </div>
+</section>
+<!-- home section ends -->
+
+<!-- about section starts  -->
+<section class="about" id="about">
+    <div class="content">
+        <h3>best quality Repair services</h3>
+        <p>Welcome to Electronics Services we are one of the leading home appliance service providers in all over
+            India. Our company provides a full range of services for the repair of household appliances of almost all
+            brands and models of both domestic and imported production.</p>
+        <p> We offering complete repairing services for various electronic items such as Laptops, Smartphone, Multi
+            Media, Wifi Router, Projector and many more.</p>
+        <a href="#services" class="btn">read more</a>
+    </div>
+    <div class="image">
+        <img src="{% static 'images/about-img.svg' %}" alt="">
+    </div>
+</section>
+<!-- about section ends -->
+
+<!-- services section starts  -->
+<section class="services" id="services">
+    <h1 class="heading"> our <span>services</span> </h1>
+    <div class="box-container">
+        <div class="box">
+            <img src="{% static 'images/service-1.svg' %}" alt="">
+            <h3>computer repair</h3>
+            <a href="/bookings"><button class="bttn"><b>Book Now</b></button></a>
+        </div>
+        <div class="box">
+            <img src="{% static 'images/service-2.svg' %}" alt="">
+            <h3>laptop repair</h3>
+            <a href="/bookings"><button class="bttn"><b>Book Now</b></button></a>
+        </div>
+        <div class="box">
+            <img src="{% static 'images/service-3.svg' %}" alt="">
+            <h3>smartphone repair</h3>
+            <a href="/bookings"><button class="bttn"><b>Book Now</b></button></a>
+        </div>
+        <div class="box">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/tv-1817148-1538016.png"
+                 srcset="https://cdn.iconscout.com/icon/free/png-512/tv-1817148-1538016.png 2x" alt="Tv Icon" width="80">
+            <h3>tv repair</h3>
+            <a href="/bookings"><button class="bttn"><b>Book Now</b></button></a>
+        </div>
+    </div>
+</section>
+<!-- services section ends -->
+
+<!-- gallery section starts  -->
+<section class="gallery" id="gallery">
+    <h1 class="heading"> our <span>gallery</span> </h1>
+    <div class="gallery-container">
+        <a class="box" href="{% static 'images/g-img-1.jpg' %}"><img src="{% static 'images/g-img-1.jpg' %}" alt=""></a>
+        <a class="box" href="{% static 'images/g-img-2.jpg' %}"><img src="{% static 'images/g-img-2.jpg' %}" alt=""></a>
+        <a class="box" href="{% static 'images/g-img-8.jpg' %}"><img src="{% static 'images/g-img-8.jpg' %}" alt=""></a>
+    </div>
+</section>
+<!-- gallery section ends -->
+
+<!-- review section starts  -->
+<section class="reviews" id="reviews">
+    <h1 class="heading"> <span>Reviews</span> </h1>
+    <form method="post" class="review-form" action="{% url 'reviews' %}">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Your Name" required>
+        <textarea name="review" placeholder="Your Review" rows="4" name="review" id="review" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="review-list">
+        {% for review in reviews %}
+        <div class="review-item">
+            <strong>{{ review.name }}</strong>
+            <p>{{ review.review }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<!-- review section ends -->
+
+<!-- contact section starts -->
+<section class="contact" id="contact">
+    <h1 class="heading"> <span>Contact</span> Us </h1>
+    <form method="post" action="{% url 'contact' %}" class="contact-form">
+        {% csrf_token %}
+        <div class="inputBox">
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <input type="email" name="email" id="email" placeholder="Your Email" required>
+        </div>
+        <div class="inputBox">
+            <input type="tel" name="phone" id="phone" placeholder="Your Phone Number" required>
+            <input type="text" name="subject" id="subject" placeholder="Subject" required>
+        </div>
+        <textarea name="message" placeholder="Your Message" name="message" id="message" rows="4" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</section>
+<!-- contact section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+   <div class="box-container">
+
+      <div class="box">
+         <h3>quick links</h3>
+         <a class="link" href="#home"> <i class="fas fa-angle-right"></i> Home</a>
+         <a class="link" href="#about"> <i class="fas fa-angle-right"></i> About</a>
+         <a class="link" href="#services"> <i class="fas fa-angle-right"></i> Services</a>
+         <a class="link" href="#gallery"> <i class="fas fa-angle-right"></i> Gallery</a>
+         <a class="link" href="#reviews"> <i class="fas fa-angle-right"></i> Reviews</a>
+         <a class="link" href="#contact"> <i class="fas fa-angle-right"></i> Contact</a>
+      </div>
+
+      <div class="box">
+         <h3>contact info</h3>
+         <a href="tell:7892230126" class="link"> <i class="fas fa-phone"></i> 1234567890 </a>
+         <a href="#" class="link"> <i class="fas fa-phone"></i> 1234567890 </a>
+         <a href="mailto:" class="link"> <i class="fas fa-envelope"></i> pradeep@gmail.com</a>
+         <a href="#" class="link"> <i class="fas fa-map"></i> LB clg, sagara, shimoga, india - 577401 </a>
+      </div>
+
+   </div>
+
+   
+
+</section>
+
+<!-- footer section ends -->
+
+</body>
+</html>

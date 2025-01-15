@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/book_service.css' %}">
+    <title>Service Request Form</title>
+</head>
+<body>
+    
+    <form method="post">
+        {% csrf_token %}
+        <h1>SERVICE REQUEST FORM</h1>
+        <label for="customer_name">Customer Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email ID:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="phone_number">Phone Number:</label><br>
+        <input type="tel" id="phonenumber" name="phonenumber" required><br><br>
+        
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" required><br><br>
+        
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city" required><br><br>
+        
+        <label for="state">State:</label><br>
+        <input type="text" id="state" name="state" required><br><br>
+        
+        <label for="pincode">Pincode:</label><br>
+        <input type="text" id="pincode" name="pincode" required><br><br>
+        
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" name="date" required><br><br>
+        
+        <label for="service_type">Select Service:</label><br>
+        <select id="service_type" name="service_type" required>
+            <option value="tv_repair">TV Repair</option>
+            <option value="laptop_repair">Laptop Repair</option>
+            <option value="mobile_repair">Mobile Repair</option>
+            <option value="home_appliances_repair">Home Appliances Repair</option>
+        </select><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

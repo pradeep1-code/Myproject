@@ -1,0 +1,36 @@
+<!-- templates/appointments.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/appoint.css' %}">
+</head>
+<body>
+    <h2>My Appointments</h2>
+    {% if appointments %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.service_type }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.address }}, {{ appointment.city }}, {{ appointment.state }} - {{ appointment.pincode }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have no appointments.</p>
+    {% endif %}
+</body>
+</html>
